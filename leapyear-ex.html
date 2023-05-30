@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leap Year and Horary Signs</title>
+  <style>
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    p {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Leap Year and Horary Signs</h1>
+  <p>Enter a year below:</p>
+  <input type="number" id="yearInput" placeholder="Enter a year" />
+  <button onclick="checkYear()">Check</button>
+  <p id="result"></p>
+  
+  <script>
+    function checkYear() {
+      var yearInput = document.getElementById('yearInput');
+      var year = parseInt(yearInput.value);
+      
+      if (isNaN(year)) {
+        document.getElementById('result').innerHTML = 'Please enter a valid year.';
+        return;
+      }
+      
+      var isLeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+      
+      var horarySign = getHorarySign(year);
+      
+      if (isLeapYear) {
+        document.getElementById('result').innerHTML = year + ' is a leap year. The horary sign is ' + horarySign + '.';
+      } else {
+        document.getElementById('result').innerHTML = year + ' is a common year. The horary sign is ' + horarySign + '.';
+      }
+    }
+    
+    function getHorarySign(year) {
+      var horarySigns = ['Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Sheep', 'Monkey', 'Rooster', 'Dog', 'Pig'];
+      var index = (year - 1900) % 12;
+      return horarySigns[index];
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
